@@ -11,7 +11,7 @@ https://alpaca-mcp-s.duckdns.org/mcp
 Use exactly these test parameters:
 
 ```text
-RPS=1000
+RPS=1500
 DURATION=5m
 ```
 
