@@ -12,7 +12,7 @@ Use exactly these test parameters:
 
 ```text
 RPS=1000
-DURATION=1m
+DURATION=5m
 ```
 
 Do not ask me any questions. All required values are already provided.
@@ -137,5 +137,5 @@ Do not run it more than once.
 Do not replace Vegeta with another load-testing tool.
 Do not stop after creating the files.
 -->
-After the command finishes, show the complete `vegeta report` output and provide a two-line summary of the results.
+
 
