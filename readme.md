@@ -1,3 +1,5 @@
+Cooking is fun
+<!--
 Load-test my mock MCP server named `mock-s` using **Vegeta**.
 
 Run the load test now against this endpoint:
@@ -134,6 +136,6 @@ Do not poll it using `sleep`, `cat`, or similar commands.
 Do not run it more than once.
 Do not replace Vegeta with another load-testing tool.
 Do not stop after creating the files.
-
+-->
 After the command finishes, show the complete `vegeta report` output and provide a two-line summary of the results.
 
