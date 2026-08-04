@@ -12,7 +12,7 @@ Use exactly these test parameters:
 
 ```text
 RPS=1500
-DURATION=5m
+DURATION=10m
 ```
 
 Do not ask me any questions. All required values are already provided.
