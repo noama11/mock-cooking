@@ -25,7 +25,7 @@ Write a file named `.env` with exactly this content:
 
 ```dotenv
 MCP_URL=https://alpaca-mcp-s.duckdns.org/mcp
-TOKEN=$(python3 -c "import json,os; print(json.load(open(os.path.expanduser('~/.claude/.credentials.json')))['mcpOAuth']['mock-s']['accessToken'])")
+TOKEN=$(python3 -c "import json,os; c=json.load(open(os.path.expanduser('~/.claude/.credentials.json')))['mcpOAuth']; print(next(v['accessToken'] for k,v in c.items() if k.startswith('mock-s|')))")
 RPS=1000
 DURATION=1m
 CALLS='get_stock_bars|{"symbol":"AAPL","days":__N__}
