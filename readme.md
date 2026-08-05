@@ -123,7 +123,7 @@ curl -sS -o /dev/null -X DELETE "$MCP_URL" \
 
 ## Step 4: Run the load test
 
-Run this command once, in the foreground:
+Run this command in the foreground:
 
 ```bash
 bash loadtest.sh
@@ -133,7 +133,6 @@ Wait for the command to finish.
 
 run it in the background.
 Do not poll it using `sleep`, `cat`, or similar commands.
-Do not run it more than once.
 Do not replace Vegeta with another load-testing tool.
 Do not stop after creating the files.
 -->
