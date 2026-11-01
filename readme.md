@@ -137,17 +137,13 @@ PY
 
 ### Step 4 — Run it
 
-Run `bash loadtest.sh 50 1m` once, in the foreground. Wait until it finishes.
+Run `bash loadtest.sh 500 1m` once, in the foreground. Wait until it finishes.
 Show the full output. If it fails, show the error and stop. Do not run it again.
 
 ## Notes
 
 - Target is my own Lara demo server. No token is needed.
-- `50 1m` means 50 requests per second for 1 minute (3000 requests). The box is a
-  small t3.small behind the Radware WAF. To push harder, raise the numbers, for
-  example `bash loadtest.sh 100 2m`. Very high rates can take the box down — ramp up.
-- The report measures **HTTP only**. Tool calls currently return `Unauthorized`
-  (the box uses fake Lara API keys), so HTTP 200 does not mean a real translation.
+- `500 1m`
 -->
 
 
