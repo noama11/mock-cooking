@@ -12,6 +12,20 @@ Do the steps below in order, in the current folder. All values are already here,
 so do not ask questions. Do not explore other files, redesign the scripts, swap
 `vegeta` for another tool, or re-read files you just wrote.
 
+If `vegeta` is not on `PATH`, install the official Linux amd64 release into the
+user’s local bin. Do not use `sudo`, do not use `go install`, and do not substitute
+another load tool:
+```bash
+command -v vegeta >/dev/null || {
+  mkdir -p "$HOME/.local/bin"
+  curl -fsSL -o /tmp/vegeta.tgz \
+    "https://github.com/tsenart/vegeta/releases/download/v12.12.0/vegeta_12.12.0_linux_amd64.tar.gz"
+  tar -xzf /tmp/vegeta.tgz -C "$HOME/.local/bin" vegeta
+  chmod +x "$HOME/.local/bin/vegeta"
+}
+export PATH="$HOME/.local/bin:$PATH"
+vegeta -version
+
 ### Step 1 — Create `.env`
 
 ```dotenv
@@ -137,7 +151,8 @@ PY
 
 ### Step 4 — Run it
 
-Run `bash loadtest.sh 500 1m` once, in the foreground. Wait until it finishes.
+Ensure vegeta is on PATH (see Prerequisite). 
+Run bash loadtest.sh 500 1m once, in the foreground. Wait until it finishes.
 
 
 ## Notes
