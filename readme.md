@@ -12,19 +12,40 @@ Do the steps below in order, in the current folder. All values are already here,
 so do not ask questions. Do not explore other files, redesign the scripts, swap
 `vegeta` for another tool, or re-read files you just wrote.
 
-If `vegeta` is not on `PATH`, install the official Linux amd64 release into the
-user’s local bin. Do not use `sudo`, do not use `go install`, and do not substitute
-another load tool:
+### `vegeta` (verify first; install only if missing)
+
+**Do not download or install `vegeta` if it is already usable.** Many machines have it under
+`~/go/bin` or `~/.local/bin` without those directories on `PATH`.
+
+Run this once before :
+
 ```bash
-command -v vegeta >/dev/null || {
+export PATH="$HOME/.local/bin:$HOME/go/bin:/usr/local/bin:$PATH"
+if command -v vegeta >/dev/null 2>&1; then
+  echo "vegeta OK: $(command -v vegeta)"
+  vegeta -version
+else
+  for p in "$HOME/go/bin/vegeta" "$HOME/.local/bin/vegeta" "/usr/local/bin/vegeta"; do
+    if [ -x "$p" ]; then
+      export PATH="$(dirname "$p"):$PATH"
+      echo "vegeta OK: $p"
+      "$p" -version
+      break
+    fi
+  done
+fi
+command -v vegeta >/dev/null 2>&1 || {
+  echo "vegeta not found — installing to \$HOME/.local/bin"
   mkdir -p "$HOME/.local/bin"
   curl -fsSL -o /tmp/vegeta.tgz \
     "https://github.com/tsenart/vegeta/releases/download/v12.12.0/vegeta_12.12.0_linux_amd64.tar.gz"
   tar -xzf /tmp/vegeta.tgz -C "$HOME/.local/bin" vegeta
   chmod +x "$HOME/.local/bin/vegeta"
+  export PATH="$HOME/.local/bin:$PATH"
+  vegeta -version
 }
-export PATH="$HOME/.local/bin:$PATH"
-vegeta -version
+
+
 
 ### Step 1 — Create `.env`
 
