@@ -138,7 +138,7 @@ PY
 ### Step 4 — Run it
 
 Run `bash loadtest.sh 500 1m` once, in the foreground. Wait until it finishes.
-Show the full output. If it fails, show the error and stop. Do not run it again.
+
 
 ## Notes
 
